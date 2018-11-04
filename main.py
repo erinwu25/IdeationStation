@@ -44,10 +44,10 @@ class MainPage(webapp2.RequestHandler):
 
 class IdeasPage(webapp2.RequestHandler):
     def get(self):
-        # categories = getCategories(classify_url)
+        categories = getCategories(classify_url)
         template = env.get_template("ideas.html")
         user_ideas = self.request.get("user_ideas")
-        #perform Natural language API stuff
+
         languages = {'C++': None, 'C': None, 'C#': None, 'Java': None, 'Python': None, 'HTML': None, 'CSS': None,
                     'JavaScript': None, 'MySQL': None, 'Go': None,
         }
@@ -55,7 +55,7 @@ class IdeasPage(webapp2.RequestHandler):
                     'blockchain': None, 'database': None
         }
         templateVars={
-            # "categories": categories,
+            "categories": categories,
             "user_ideas": user_ideas,
         }
         self.response.write(template.render(templateVars))
