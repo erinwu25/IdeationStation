@@ -24,6 +24,10 @@ env = jinja2.Environment(
     autoescape = True
 )
 
+# class Brainstorm(ndb.model):
+#     user_ideas = ndb.StringProperty()
+#     recommenda
+
 class MainPage(webapp2.RequestHandler):
     def get(self):
         templateVars = {
@@ -31,17 +35,28 @@ class MainPage(webapp2.RequestHandler):
         template = env.get_template("index.html")
         self.response.write(template.render(templateVars))
 
-    def post(self):
-        templateVars = {
-            "user_text": user_text;
-        }
-        template = env.get_template("index.html")
-        self.response.write(template.render(templateVars))
+    # def post(self):
+    #     templateVars = {
+    #         "user_text": user_text;
+    #     }
+    #     template = env.get_template("index.html")
+    #     self.response.write(template.render(templateVars))
 
 class IdeasPage(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("ideas.html")
-        self.response.write(template.render())
+        user_ideas = self.request.get("user_ideas")
+        #perform Natural language API stuff
+        languages = {'C++': None, 'C': None, 'C#': None, 'Java': None, 'Python': None, 'HTML': None, 'CSS': None,
+                    'JavaScript': None, 'MySQL': None, 'Go': None,
+        }
+        skills = {'mobile': None, 'software': None, 'back-end': None, 'front-end': None, 'machine learning': None,
+                    'blockchain': None, 'database': None
+        }
+        templateVars={
+            "user_ideas": user_ideas,
+        }
+        self.response.write(template.render(templateVars))
 
 
 app = webapp2.WSGIApplication([
