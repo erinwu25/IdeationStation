@@ -77,9 +77,7 @@ def getCategories(url, user_ideas): #url is unique to categories function in api
 
 	jsondata = json.dumps(data)
 	result = urlfetch.fetch(url, method=urlfetch.POST, payload=json.dumps(data), headers=headers)
-	print result
 	python_result = json.loads(result.content)
-	print python_result
 	string = ""
 	if 'categories' in python_result:
 	       for i in range(0, len(python_result["categories"])):
