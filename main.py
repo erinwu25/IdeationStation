@@ -5,12 +5,18 @@ import time
 import argparse
 import io
 import json
+import StringIO
+import urllib
 #^unsure if those last three imports are needed but the docs said they were
 
-from google.cloud import language
-from google.cloud.language import types
-from google.cloud.language import enums
+#import apis from google appengine
+from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
+
+#import classify function from language apis
+API_KEY = "AIzaSyAAJVm5_VGMef71NmctVuM9H0ShUoAEq3o"
+classify_url = "https://language.googleapis.com/v1/documents:classifyText?key=" + API_KEY
+
 
 env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
