@@ -31,6 +31,14 @@ class MainPage(webapp2.RequestHandler):
         template = env.get_template("index.html")
         self.response.write(template.render(templateVars))
 
+    def post(self):
+        templateVars = {
+            "user_text": user_text;
+        }
+        template = env.get_template("index.html")
+        self.response.write(template.render(templateVars))
+
+
 app = webapp2.WSGIApplication([
     ("/", MainPage),
 
