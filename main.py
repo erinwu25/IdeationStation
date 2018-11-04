@@ -6,15 +6,16 @@ import argparse
 import io
 import json
 import StringIO
+import sys
 import urllib
-#^unsure if those last three imports are needed but the docs said they were
 
 #import apis from google appengine
 from google.appengine.api import urlfetch
 from google.appengine.ext import ndb
 
+
 #import classify function from language apis
-API_KEY = "AIzaSyAAJVm5_VGMef71NmctVuM9H0ShUoAEq3o"
+API_KEY = "AIzaSyB9pJaPqVHdheQX87OYwn9puDlMtaWiUu4"
 classify_url = "https://language.googleapis.com/v1/documents:classifyText?key=" + API_KEY
 
 
@@ -71,6 +72,7 @@ def getCategories(url, user_ideas): #url is unique to categories function in api
 	    }
 	}
 
+
 	headers = {
 	   "Content-Type" : "application/json; charset=utf-8"
 	}
@@ -78,8 +80,9 @@ def getCategories(url, user_ideas): #url is unique to categories function in api
 	jsondata = json.dumps(data)
 	result = urlfetch.fetch(url, method=urlfetch.POST, payload=json.dumps(data), headers=headers)
 	python_result = json.loads(result.content)
+
 	string = ""
-	if 'categories' in python_result:
+	if 'categories' in python_result and len(python_result["categories"])<0:
 	       for i in range(0, len(python_result["categories"])):
 	              string += "Your ideas indicates that you might want to: "
 	              string += python_result["categories"][i]["name"]
@@ -88,7 +91,8 @@ def getCategories(url, user_ideas): #url is unique to categories function in api
 	              string += " level of confidence. \n"
 	       return string
 	else:
-	       return 'Not enough data'
+	       return "Unfortunately, our application is unable to process your notes. Please try again later; we are always working on improving our app."
+
 
 
 
