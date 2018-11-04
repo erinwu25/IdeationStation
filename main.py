@@ -14,8 +14,12 @@ env = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        # fetch that question, and return that key and pass as a template variable.
-        template = env.get_template("index.html")
         templateVars = {
         }
+        template = env.get_template("index.html")
         self.response.write(template.render(templateVars))
+
+app = webapp2.WSGIApplication([
+    ("/", MainPage),
+
+], debug=True)
