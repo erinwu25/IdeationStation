@@ -8,6 +8,12 @@
         background-color: powderblue;
         text-align: center;
       }
+      #nextButton{
+        visibility: hidden;
+      }
+      #textInput{
+        disabled: true;
+      }
     </style>
   </head>
 
@@ -22,24 +28,32 @@
     <button onclick="timerFunction()">Go</button>
 
     <p> Time left:<br><span id="countdowntimer">1:00 </span> </p>
-
+      <input id="textInput" disabled></input>
+      <br>
+      <button id="nextButton" onclick="redirectToIdeas()">Results</button>
     <script type="text/javascript">
-
         function timerFunction() {
+          document.getElementById("textInput").disabled = false;
           var timeleft = 60;
           var downloadTimer = setInterval(function(){
           timeleft--;
           document.getElementById("countdowntimer").textContent = timeleft;
           if(timeleft <= 0) {
             clearInterval(downloadTimer);
-            user_ideas = document.getElementById('brainstorm').value;
-            window.location.href=`/ideas?user_ideas=${user_ideas}`;
-          }
-          },1000);
-        ;}
-    </script>
+            user_ideas = document.getElementById('textInput').value;
+            document.getElementById("textInput").disabled = true;
+            document.getElementById("nextButton").style.visibility = "visible";
 
-    <input id="brainstorm"></input>
+          }
+        },1000);
+        }
+        function redirectToIdeas() {
+          console.log("Meh");
+          user_ideas = document.getElementById('textInput').value;
+          window.location.href=`/ideas?user_ideas=${user_ideas}`;
+
+        }
+    </script>
   </body>
 
 </html>
