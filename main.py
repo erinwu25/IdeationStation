@@ -88,7 +88,7 @@ def getCategories(url, user_ideas): #url is unique to categories function in api
 	              string += " category with a "
 	              string += str(python_result["categories"][i]["confidence"])
 	              string += " level of confidence. \n"
-	return string
+	       return string
 	else:
 	       return 'Not enough data'
 
