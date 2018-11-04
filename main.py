@@ -1,7 +1,10 @@
 import webapp2
 import jinja2
 import os
-import logging
 import time
+import argparse
+import io
+import json
+#^unsure if those last three imports are needed but the docs said they were 
 
-from google.appengine.ext import 
+from google.cloud import language
