@@ -18,26 +18,27 @@
       <br>
       and begin writing anything
     </h2>
-
+  
     <button onclick="timerFunction()">Go</button>
 
     <p> Time left:<br><span id="countdowntimer">1:00 </span> </p>
-
     <script type="text/javascript">
-
+        document.getElementById("textInput").disabled = true;
         function timerFunction() {
-          var timeleft = 60;
+          document.getElementById("textInput").disabled = false;
+          var timeleft = 5;
           var downloadTimer = setInterval(function(){
           timeleft--;
           document.getElementById("countdowntimer").textContent = timeleft;
           if(timeleft <= 0) {
             clearInterval(downloadTimer);
+            document.getElementById("textInput").disabled = true;
           }
           },1000);
         ;}
     </script>
 
-    <input></input>
+    <input id="textInput"></input>
   </body>
 
 </html>
