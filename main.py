@@ -40,6 +40,10 @@ class MainPage(webapp2.RequestHandler):
 
 class IdeasPage(webapp2.RequestHandler):
     def get(self):
+        categories = getCategories(classify_url)
+        templateVars = {
+            "categories": categories;
+        }
         template = env.get_template("ideas.html")
         self.response.write(template.render())
 

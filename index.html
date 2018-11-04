@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  
+
   <head>
     <title>Ideation Station</title>
     <style>
@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    
+
     <h1>Welcome to the Ideation Station!</h1>
     <h2>Click go to start the timer
       <br>
@@ -22,7 +22,7 @@
     <button onclick="timerFunction()">Go</button>
 
     <p> Time left:<br><span id="countdowntimer">1:00 </span> </p>
-    
+
     <script type="text/javascript">
 
         function timerFunction() {
@@ -32,7 +32,7 @@
           document.getElementById("countdowntimer").textContent = timeleft;
           if(timeleft <= 0) {
             clearInterval(downloadTimer);
-          } 
+          }
           },1000);
         ;}
     </script>
