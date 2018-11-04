@@ -38,8 +38,14 @@ class MainPage(webapp2.RequestHandler):
         template = env.get_template("index.html")
         self.response.write(template.render(templateVars))
 
+class IdeasPage(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("ideas.html")
+        self.response.write(template.render())
+
 
 app = webapp2.WSGIApplication([
     ("/", MainPage),
+    ("/ideas", IdeasPage),
 
 ], debug=True)
