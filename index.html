@@ -3,15 +3,27 @@
 
   <head>
     <title>Ideation Station</title>
+    <style>
+      body {
+        background-color: powderblue;
+        text-align: center;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Welcome! <br>Click Start and begin!</h1>
 
-    <button>Start</button>
+    <h1>Welcome to the Ideation Station!</h1>
+    <h2>Click go to start the timer
+      <br>
+      and begin writing anything
+    </h2>
+
+    <button onclick="timerFunction()">Go</button>
 
     <p> Time left:<br><span id="countdowntimer">1:00 </span> </p>
     <script type="text/javascript">
+
         var timeleft = 59;
         var downloadTimer = setInterval(function(){
         timeleft--;
@@ -21,11 +33,24 @@
           clearInterval(downloadTimer);
         }
         },1000);
+
+        document.getElementById("textInput").disabled = true;
+        function timerFunction() {
+          document.getElementById("textInput").disabled = false;
+          var timeleft = 5;
+          var downloadTimer = setInterval(function(){
+          timeleft--;
+          document.getElementById("countdowntimer").textContent = timeleft;
+          if(timeleft <= 0) {
+            clearInterval(downloadTimer);
+            document.getElementById("textInput").disabled = true;
+          }
+          },1000);
+        ;}
+
     </script>
 
-    <input></input>
+    <input id="textInput"></input>
   </body>
-
-
 
 </html>
